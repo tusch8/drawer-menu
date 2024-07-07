@@ -1,0 +1,130 @@
+// dialogのスタイルををリセット
+:where(dialog) {
+	position: static;
+	width: auto;
+	max-width: none;
+	height: auto;
+	max-height: none;
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+}
+
+// buttonのスタイルををリセット
+:where(button) {
+	padding: 0;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	appearance: none;
+}
+
+// テキストを隠すスタイル
+.hidden {
+	clip: rect(0, 0, 0, 0) !important;
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	margin: -1px !important;
+	padding: 0 !important;
+	overflow: hidden !important;
+	border: 0 !important;
+	white-space: nowrap !important;
+}
+
+// dialogが開いているときに背景固定
+body:has(dialog[open]) {
+	overflow: hidden;
+}
+
+// 背景部分
+dialog::backdrop {
+	background: rgb(255 255 255 / 0.5);
+	backdrop-filter: blur(3px);
+}
+
+// ハンバーガーボタン
+.hamburger {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	width: 40px;
+	height: 40px;
+	border: 1px solid;
+	background: white;
+
+	// 閉じるボタンのとき
+	&.hamburger-close {
+		.hamburger-icon {
+			background: transparent;
+			&::before {
+				top: 0;
+				rotate: 135deg;
+			}
+			&::after {
+				top: 0;
+				rotate: -135deg;
+			}
+		}
+	}
+}
+
+.hamburger-icon {
+	position: absolute;
+	top: 50%;
+	left: 5px;
+	width: 28px;
+	height: 1px;
+	background: black;
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		width: inherit;
+		height: inherit;
+		background: black;
+		transition: inherit;
+	}
+	&::before {
+		top: -9px;
+	}
+	&::after {
+		top: 9px;
+	}
+}
+
+// メニュー部分
+.drawer {
+	--duration: 0.3s;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: auto;
+	transition: translate var(--duration);
+	translate: 0;
+	&::backdrop {
+		transition: opacity var(--duration);
+	}
+
+	// メニューを表示する前後のスタイル
+	&.is-open,
+	&.is-close {
+		translate: 100%;
+		&::backdrop {
+			opacity: 0;
+		}
+	}
+}
+
+.drawer-container {
+	width: 50vw;
+	height: 100vh;
+	margin: 0;
+	padding-top: 30px;
+	box-sizing: border-box;
+	background: lightgray;
+}

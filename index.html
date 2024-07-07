@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>dialogを使ったドロワーメニュー</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<script src="./js/script.js" defer></script>
+</head>
+
+<body>
+
+	<nav>
+		<dialog class="drawer" data-drawer autofocus>
+			<button class="hamburger hamburger-close" type="button" data-drawer-close>
+				<span class="hamburger-icon">
+					<span class="hidden">メニューを閉じる</span>
+				</span>
+			</button>
+			<ul role="list" class="drawer-container" data-drawer-container>
+				<li>
+					<a href="">メニュー1</a>
+				</li>
+				<li>
+					<a href="">メニュー2</a>
+				</li>
+				<li>
+					<a href="">メニュー3</a>
+				</li>
+				<li>
+					<a href="">メニュー4</a>
+				</li>
+				<li>
+					<a href="">メニュー5</a>
+				</li>
+			</ul>
+		</dialog>
+		<button class="hamburger" type="button" data-drawer-trigger>
+			<span class="hamburger-icon">
+				<span class="hidden">メニューを開く</span>
+			</span>
+		</button>
+	</nav>
+
+	<h1 style="margin-top: 50px;">dialogを使ったドロワーメニュー</h1>
+
+	<div style="margin-top: 300px; height: 1000px;">
+		<p>メニューを開いているとき、dialog外にはフォーカスがあたらない</p>
+		<button>ボタン</button>
+		<a href="">リンク</a>
+	</div>
+
+</body>
+
+</html>
